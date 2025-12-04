@@ -1,0 +1,9 @@
+# Ignore a specific file
+
+# Ignore all .txt files
+*.txt
+
+# Ignore all .md files inside 2025 and its subfolder
+2025/**/*.md
+
+
