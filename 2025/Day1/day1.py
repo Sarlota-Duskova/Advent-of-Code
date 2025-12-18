@@ -103,9 +103,11 @@ def main():
     start_position = 50
     dial_size = 100
 
+    # Part 1
     part1 = count_zero_end_positions(rotations, start_position, dial_size)
     logging.info(f"Part 1 result: {part1}")
     
+    # Part 2
     part2 = count_zero_all_clicks(rotations, start_position, dial_size)
     logging.info(f"Part 2 result: {part2}")
 
