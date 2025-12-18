@@ -14,9 +14,10 @@ __location__ = os.path.realpath(
 
 # ------------------ File Reading ------------------
 
-def read_file(filename):
+def read_file(filename: str) -> list[str]:
     """
-    Read rotation instructions like L68 or R10 from a file.
+    Read rotation instructions like 'L68' or 'R10' from a file.
+    Each line represents one rotation.
     """
 
     with open(filename, "r") as file:
@@ -34,7 +35,7 @@ def read_file(filename):
     
 # ------------------ Part 1 ------------------
 
-def count_zero_end_positions(rotations, start_position, dial_size):
+def count_zero_end_positions(rotations: list[str], start_position: int, dial_size: int) -> int:
     """
     Part 1
     - The dial start by pointing at 50.
@@ -61,7 +62,7 @@ def count_zero_end_positions(rotations, start_position, dial_size):
 
 # ------------------ Part 2 ------------------
 
-def count_zero_all_clicks(rotations, start_position, dial_size):
+def count_zero_all_clicks(rotations: list[str], start_position: int, dial_size: int) -> int:
     """
     Part 2
     - The dial start by pointing at 50.
