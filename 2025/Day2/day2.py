@@ -89,12 +89,12 @@ def is_repeated_block(s: str) -> bool:
         Returns True if the string is composed of a block repeated at least twice.
         Example: '1212', '123123', '111111', '12341234'.
         """
-        print(s)
+        
         length = len(s)
 
         if length < 2:
             return False
-        print(f"test {(length // 2 + 1)}")
+        
         for block_size in range(1, length // 2 + 1): # 2 // 2 = 1 -> 1 + 1 = 2
             if length % block_size == 0 and s == s[:block_size] * (length // block_size):
                 # Example: 11
@@ -152,14 +152,14 @@ def main():
     #logging.info(f"ID ranges: {id_ranges}")
 
     # ---- Part 1 ----
-    invalid_part1 = find_invalid_ids_part1(id_ranges) # {'11-22': [11, 22], '95-115': [99],
-    all_invalid_part1 = [num for ids in invalid_part1.values() for num in ids] # [11, 22, 99, 1010, 1188511885, 222222, 446446, 38593859]
-    logging.info(f"Part 1: Sum of invalid IDs: {sum(all_invalid_part1)}")
+    invalid_ids_part1 = find_invalid_ids_part1(id_ranges) # {'11-22': [11, 22], '95-115': [99],
+    all_invalid_ids_part1 = [num for ids in invalid_ids_part1.values() for num in ids] # [11, 22, 99, 1010, 1188511885, 222222, 446446, 38593859]
+    logging.info(f"Part 1: Sum of invalid IDs: {sum(all_invalid_ids_part1)}")
 
     # ---- Part 2 ----
-    invalid_part2 = find_invalid_ids_part2(id_ranges)
-    all_invalid_part2 = [num for ids in invalid_part2.values() for num in ids]
-    logging.info(f"Part 2: Sum of invalid IDs: {sum(all_invalid_part2)}")
+    invalid_ids_part2 = find_invalid_ids_part2(id_ranges)
+    all_invalid_ids_part2 = [num for ids in invalid_ids_part2.values() for num in ids]
+    logging.info(f"Part 2: Sum of invalid IDs: {sum(all_invalid_ids_part2)}")
     
 if __name__ == "__main__":
     main()  
