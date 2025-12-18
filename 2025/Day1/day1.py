@@ -12,6 +12,8 @@ __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__))
 )
 
+# ------------------ File Reading ------------------
+
 def read_file(filename):
     """
     Read rotation instructions like L68 or R10 from a file.
@@ -30,6 +32,8 @@ def read_file(filename):
     return rotation
      """
     
+# ------------------ Part 1 ------------------
+
 def count_zero_end_positions(rotations, start_position, dial_size):
     """
     Part 1
@@ -55,6 +59,7 @@ def count_zero_end_positions(rotations, start_position, dial_size):
     
     return zero_hits
 
+# ------------------ Part 2 ------------------
 
 def count_zero_all_clicks(rotations, start_position, dial_size):
     """
