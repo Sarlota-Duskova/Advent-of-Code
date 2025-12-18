@@ -1,6 +1,5 @@
 import logging # For logging events
 import os # Provides a way to interact with the operating system, such as file and directory operations. 
-import re # Regular expressions
 
 logging.getLogger('urllib3').setLevel(logging.INFO) # Set up logging events.
 
