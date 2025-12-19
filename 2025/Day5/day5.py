@@ -91,13 +91,12 @@ def count_total_fresh_ids(fresh_ranges: list[tuple[int, int]]) -> int:
             current_start, current_end = start, end # Start a new merged range
 
     total += current_end - current_start + 1 # Add the final merged range
-
     return total
 
 # ------------------ Main ------------------
 
 def main():
-    filename_path = os.path.join(__location__, "day5_test.txt")
+    filename_path = os.path.join(__location__, "day5.txt")
     fresh_ranges, available_ids = read_file(filename_path)
     #logging.info(f"Ingrediends list: {fresh_ranges, available_ids}")
 
