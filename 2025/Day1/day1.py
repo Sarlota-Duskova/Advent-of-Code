@@ -76,8 +76,6 @@ def count_zero_all_clicks(rotations: list[str], start_position: int, dial_size: 
         steps = int(rotation[1:])
         start = current_position
 
-        
-
         if direction == "L":
             # First time reaching 0 going left
             steps_to_zero = start if start != 0 else dial_size
