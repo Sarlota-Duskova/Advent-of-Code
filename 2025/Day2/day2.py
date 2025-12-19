@@ -1,10 +1,13 @@
 import logging # For logging events
 import os # Provides a way to interact with the operating system, such as file and directory operations.
 
-logging.getLogger('urllib3').setLevel(logging.INFO) # Set up logging events.
+# ------------------ Logging ------------------
 
+logging.getLogger('urllib3').setLevel(logging.INFO) # Set up logging events.
 log_level = logging.INFO # Define log level for the program.
 logging.basicConfig(level=log_level, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# ------------------ File Location ------------------
 
 # Dynamically determine the location of the script.
 __location__ = os.path.realpath(
