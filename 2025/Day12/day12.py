@@ -74,8 +74,49 @@ def read_file(filename: str):
         return shapes, regions
 
 # ------------------ Part 1 ------------------
-def part1():
-    pass
+
+
+def part1(shapes: dict[int, list[str]], regions) -> int:
+    # count how many '#' each shape has
+    shape_area = {}
+
+    # Loop through all shapes
+    for sid, grid in shapes.items():
+        # Initialize counter for this shape
+        count = 0
+        
+        # Loop through each row in the grid
+        for row in grid:
+            # Count number of '#' in this row and add to total count
+            count += row.count("#")
+        
+        # Store the total count in the dictionary
+        shape_area[sid] = count
+
+    valid_regions = 0
+
+    for region in regions:
+        width = region["width"]
+        height = region["height"]
+        counts = region["counts"]
+
+        region_area = width * height
+        
+        # Initialize total required area
+        required_area = 0
+
+        # Loop through all shape counts for this region
+        for shape_id, count in enumerate(counts):
+            # Multiply the area of this shape by how many are needed
+            shape_total = shape_area[shape_id] * count
+
+            # Add to the total required area
+            required_area += shape_total
+
+        if required_area <= region_area:
+            valid_regions += 1
+
+    return valid_regions
 
 # ------------------ Part 1 ------------------
 def part2():
@@ -84,9 +125,12 @@ def part2():
 # ------------------ Main ------------------
 
 def main():
-    filename_path = os.path.join(__location__, "day12_test.txt")
-    presents = read_file(filename_path)
-    logging.info(f"Presents: {presents}")
+    filename_path = os.path.join(__location__, "day12.txt")
+    shapes, regions = read_file(filename_path)
+    #logging.info(f"Presents: {presents}")
+
+    part1_result = part1(shapes, regions)
+    logging.info(f"Part 1 - results: {part1_result}")
 
 if __name__ == "__main__":
     main()

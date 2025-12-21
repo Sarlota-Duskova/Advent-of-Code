@@ -1,0 +1,63 @@
+def shape_to_coords(shape: list[str]) -> list[tuple[int, int]]:
+    coords = []
+
+    for y, row in enumerate(shape):
+        for x, cell in enumerate(row):
+            if cell == "#":
+                coords.append((x, y))
+    #print(coords)
+    return coords
+
+
+def normalize(coords: list[tuple[int,int]]) -> list[tuple[int,int]]:
+    """
+    if something produce negative coorditanes, normalize them
+    """
+    min_x = min(x for x, y in coords)
+    min_y = min(y for x, y in coords)
+    return sorted((x - min_x, y - min_y) for x, y in coords)
+
+def rotate_90(coords: list[tuple[int,int]]) -> list[tuple[int,int]]:
+    """
+    Rotate once 90
+    """
+    rotated = [(y, -x) for x, y in coords]
+    return normalize(rotated)
+
+def flip(coords: list[tuple[int,int]]) -> list[tuple[int,int]]:
+    """
+    Flip horizontally
+    """
+    flipped = [(-x, y) for x, y in coords]
+    return normalize(flipped)
+
+def generate_orientations(coords: list[tuple[int,int]]) -> list[list[tuple[int,int]]]:
+    """
+    Generate all unique orientations
+    """
+    orientations = set()
+
+    current = normalize(coords)
+    for _ in range(4):
+        orientations.add(tuple(current))
+        orientations.add(tuple(flip(current)))
+        current = rotate_90(current)
+
+    return [list(o) for o in orientations]
+
+def expand_pieces(counts: list[int]) -> list[int]:
+    """
+    Now I have counts and I want to know how many shapes I need
+    "counts": [1, 0, 1, 0, 3, 2]
+    - 1 x shape 0
+    - 1 x shape 2
+    - 3 x shape 4
+    - 2 x shape 5
+
+    so I need pieces = [0, 2, 4, 4, 4, 5, 5]
+    """
+    
+    pieces = []
+    for shape_id, count in enumerate(counts):
+        pieces.extend([shape_id] * count)
+    return pieces
